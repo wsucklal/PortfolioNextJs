@@ -13,6 +13,7 @@ import {
   Icon,
   Link,
   useColorModeValue,
+  Tooltip,
 } from '@chakra-ui/react';
 import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
 import { MdEmail, MdPhone, MdCake, MdLocationOn } from 'react-icons/md';
@@ -39,9 +40,12 @@ const SidePanel: React.FC = () => {
       borderRadius="lg"
       overflowY="auto"
     >
-      <Box textAlign="right" mb={4}>
+    <Tooltip label="Change display" aria-label="Flip me to see more!" aria-describedby="Flip me to see more!" fontSize="sm">
+    <Box textAlign="right" mb={4}>
         <ColorModeSwitcher />
       </Box>
+    </Tooltip>
+
 
       <VStack p={10} spacing={4} align="center">
         <Image

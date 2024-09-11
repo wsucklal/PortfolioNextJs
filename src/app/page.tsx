@@ -36,9 +36,9 @@ export default function Home() {
         <Heading as="h3" size="lg" mb={4}>What I'm Doing</Heading>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
           {[
-            { icon: FaCode, title: "Coding", description: "Developing robust and scalable applications using modern technologies, commonly working with Full Stack Web Development" },
-            { icon: FaGraduationCap, title: "Learning", description: "Continuously expanding my knowledge, with particular intrest in AI and machine learning." },
-            { icon: FaLaptopCode, title: "Communicating", description: "Sharing ideas clearly, writing thorough documentation, and explaining technical concepts to both developers and non-technical stakeholders" },
+            { icon: FaCode, title: "Coding", description: "Developing robust and scalable applications using modern technologies, commonly working with Full Stack Web Development." },
+            { icon: FaGraduationCap, title: "Learning", description: "Continuously expanding my knowledge, with particular interest in AI and machine learning." },
+            { icon: FaLaptopCode, title: "Communicating", description: "Sharing ideas clearly, writing thorough documentation, and explaining technical concepts to both developers and non-technical stakeholders." },
             { icon: FaBrain, title: "Problem Solving", description: "Tackling complex challenges with creative solutions, where creativity meets experience." },
           ].map((item, index) => (
             <Flex key={index} align="center" p={4} bg={cardBgColor} borderRadius="md">
