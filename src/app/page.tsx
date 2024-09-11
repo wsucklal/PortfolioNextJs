@@ -1,21 +1,29 @@
 "use client"; // This makes the component a Client Component
 
 import React from 'react';
-import { Box, Text, VStack, Heading, SimpleGrid, Icon, Flex, Divider } from '@chakra-ui/react';
+import { Box, Text, VStack, Heading, SimpleGrid, Icon, Flex, Divider, useColorModeValue } from '@chakra-ui/react';
 import { FaCode, FaGraduationCap, FaLaptopCode, FaBrain } from 'react-icons/fa';
 import { FaBook, FaDumbbell, FaVolleyballBall, FaRunning, FaPodcast, FaGamepad } from 'react-icons/fa';
 import FlippingCard from './components/FlippingCard';
 
 export default function Home() {
+  const bgColor = useColorModeValue("gray.50", "gray.700");
+  const textColor = useColorModeValue("gray.800", "white");
+  const headingColor = useColorModeValue("purple.600", "purple.400");
+  const cardBgColor = useColorModeValue("white", "gray.600");
+  const cardTextColor = useColorModeValue("gray.800", "white");
+  const cardAccentColor = useColorModeValue("purple.500", "purple.300");
+  const dividerColor = useColorModeValue("gray.200", "gray.600");
+
   return (
-    <Box p={8} bg="gray.700" color="white" borderRadius="lg">
+    <Box p={8} bg={bgColor} color={textColor} borderRadius="lg">
     <VStack spacing={8} align="stretch">
       <Box>
         <Heading 
           as="h2"
           size="xl"
           mb={4}
-          color="purple.400">
+          color={headingColor}>
             About Me</Heading>
         <Text>
           Hi, I'm Warren Sucklal, a passionate software engineer based in Toronto, Canada. With a strong foundation in Software Engineering and a keen interest in cutting-edge technologies, I strive to create innovative solutions that make a difference. I thrive on tackling complex problems and collaborating on projects that have a meaningful impact on people's lives, making them better and more convenient. Whether it's optimizing processes, enhancing user experiences, or solving real-world challenges, I am committed to pushing the boundaries of what technology can achieve. My journey in tech has been driven by curiosity and a desire to continuously learn and grow.
@@ -31,18 +39,18 @@ export default function Home() {
             { icon: FaLaptopCode, title: "Communicating", description: "Sharing ideas clearly, writing thorough documentation, and explaining technical concepts to both developers and non-technical stakeholders" },
             { icon: FaBrain, title: "Problem Solving", description: "Tackling complex challenges with creative solutions, where creativity meets experience." },
           ].map((item, index) => (
-            <Flex key={index} align="center" p={4} bg="gray.600" borderRadius="md">
-              <Icon as={item.icon} boxSize={10} mr={4} />
+            <Flex key={index} align="center" p={4} bg={cardBgColor} borderRadius="md">
+              <Icon as={item.icon} boxSize={10} mr={4} color={cardAccentColor} />
               <Box>
-                <Heading as="h4" size="md" color="purple.400" mb={2}>{item.title}</Heading>
-                <Text fontSize="sm">{item.description}</Text>
+                <Heading as="h4" size="md" color={cardAccentColor} mb={2}>{item.title}</Heading>
+                <Text fontSize="sm" color={cardTextColor}>{item.description}</Text>
               </Box>
             </Flex>
           ))}
         </SimpleGrid>
       </Box>
 
-      <Divider my={8} borderColor="gray.600" />
+      <Divider my={8} borderColor={dividerColor} />
 
       <Box>
         <Heading 

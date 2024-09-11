@@ -2,7 +2,6 @@
 
 import localFont from "next/font/local";
 import "./globals.css";
-
 import ChakraProviderWrapper from "./components/ChakraProviderWrapper";
 import ClientLayout from "./components/ClientLayout";
 
@@ -22,14 +21,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  //const sidebarWidth = useBreakpointValue({ base: '100%', md: '360px' });
-
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ChakraProviderWrapper>
           <ClientLayout>{children}</ClientLayout>
         </ChakraProviderWrapper>

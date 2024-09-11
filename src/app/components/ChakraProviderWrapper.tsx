@@ -1,9 +1,17 @@
 // src/components/ChakraProviderWrapper.tsx
-import { ChakraProvider } from "@chakra-ui/react";
+"use client";
+
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { ReactNode } from "react";
+import theme from "../theme";
 
 const ChakraProviderWrapper = ({ children }: { children: ReactNode }) => {
-  return <ChakraProvider>{children}</ChakraProvider>;
+  return (
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      {children}
+    </ChakraProvider>
+  );
 };
 
 export default ChakraProviderWrapper;

@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   Select,
   HStack,
+  Container,
 } from '@chakra-ui/react';
 import { FaGithub, FaCalendar } from 'react-icons/fa';
 
@@ -36,6 +37,8 @@ const Portfolio: React.FC = () => {
 
   const cardBg = useColorModeValue('white', 'gray.700');
   const cardHoverBg = useColorModeValue('gray.100', 'gray.600');
+  const bgColor = useColorModeValue("gray.50", "gray.700");
+  const headingColor = useColorModeValue("purple.600", "purple.400");
 
   useEffect(() => {
     fetchRepositories();
@@ -87,9 +90,14 @@ const Portfolio: React.FC = () => {
   }
 
   return (
-    <Box maxWidth="1200px" margin="auto" p={5}>
+    <Box bg={bgColor} minH="100vh"  margin="auto" p={5} borderRadius="lg">
+      <Container maxW="container.xl" maxWidth="1200px" as="section" id="portfolio">
       <VStack spacing={8} align="stretch">
-        <Heading as="h1" size="2xl" textAlign="center">
+        <Heading 
+        as="h2" 
+        size="xl" 
+        textAlign="center"
+        color={headingColor}>
           My Projects
         </Heading>
 
@@ -142,6 +150,7 @@ const Portfolio: React.FC = () => {
           ))}
         </HStack>
       </VStack>
+      </Container>
     </Box>
   );
 };

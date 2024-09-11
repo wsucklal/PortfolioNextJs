@@ -1,7 +1,7 @@
 "use client"; // This makes the component a Client Component
 
 import React, { useState } from 'react';
-import { Box, VStack, Heading, Text, Icon, Progress, Tooltip } from '@chakra-ui/react';
+import { Box, VStack, Heading, Text, Icon, Progress, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 interface FlippingCardProps {
@@ -18,6 +18,10 @@ const FlippingCard: React.FC<FlippingCardProps> = ({ icon, title, level, shortDe
   const handleClick = () => {
     setIsFlipped(!isFlipped);
   };
+
+  const cardBgColor = useColorModeValue("white", "gray.600");
+  const cardTextColor = useColorModeValue("gray.800", "white");
+  const cardAccentColor = useColorModeValue("purple.500", "purple.300");
 
   return (
     <Box
@@ -41,18 +45,20 @@ const FlippingCard: React.FC<FlippingCardProps> = ({ icon, title, level, shortDe
           width="100%"
           height="100%"
           style={{ backfaceVisibility: "hidden" }}
-          bg="gray.600"
+          bg={cardBgColor}
+          color={cardTextColor}
           borderRadius="md"
           p={4}
+          boxShadow="md"
         >
           <Tooltip label="Flip me to see more!" aria-label="Flip me to see more!" aria-describedby="Flip me to see more!" fontSize="md">
-          <VStack spacing={3} height="100%" justifyContent="space-between">
-          <Icon as={icon} boxSize={10} color="purple.400" />
-            <Heading as="h4" size="md">{title}</Heading>
-            <Text color="purple.400"fontSize="sm" textAlign="center">{shortDescription}</Text>
-            <Progress value={level} colorScheme="purple" size="sm" width="80%" borderRadius="full" />
-            <Text fontSize="xs">Level {level}</Text>
-          </VStack>
+            <VStack spacing={3} height="100%" justifyContent="space-between">
+              <Icon as={icon} boxSize={10} color={cardAccentColor} />
+              <Heading as="h4" size="md" color={cardTextColor}>{title}</Heading>
+              <Text color={cardAccentColor} fontSize="sm" textAlign="center">{shortDescription}</Text>
+              <Progress value={level} colorScheme="purple" size="sm" width="80%" borderRadius="full" />
+              <Text fontSize="xs" color={cardTextColor}>Level {level}</Text>
+            </VStack>
           </Tooltip>
         </Box>
         <Box
@@ -60,10 +66,12 @@ const FlippingCard: React.FC<FlippingCardProps> = ({ icon, title, level, shortDe
           width="100%"
           height="100%"
           style={{ backfaceVisibility: "hidden" }}
-          bg="gray.600"
+          bg={cardBgColor}
+          color={cardTextColor}
           borderRadius="md"
           p={4}
           transform="rotateY(180deg)"
+          boxShadow="md"
         >
           <VStack spacing={3} justifyContent="center" height="100%">
             <Text fontSize="sm" textAlign="center">{longDescription}</Text>

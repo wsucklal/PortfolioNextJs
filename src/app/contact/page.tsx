@@ -17,6 +17,8 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Container,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import emailjs from "emailjs-com";
 
@@ -24,6 +26,10 @@ import emailjs from "emailjs-com";
 const Contact: React.FC = () => {
 
   const toast = useToast();
+
+  const bgColor = useColorModeValue("gray.50", "gray.700");
+  const textColor = useColorModeValue("gray.800", "white");
+  const headingColor = useColorModeValue("purple.600", "purple.400");
 
   const [formData, setFormData] = useState({
     name: "",
@@ -69,84 +75,91 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <Box as="section" id="contact" py={10}>
-      <VStack spacing={8} align="stretch" maxW="container.md" mx="auto">
-        <VStack spacing={2} align="center">
-            <Heading as="h2" size="xl" textAlign="center">
-            Contact Me
-            </Heading>
-            <Text textAlign="center">
-            Feel free to reach out to me for any inquiries or opportunities.
-            </Text>
+    <Box p={8}bg={bgColor} minH="100vh" color={textColor} borderRadius="lg">
+      <Container maxW="container.xl" as="section" id="contact" >
+        <VStack spacing={8} align="stretch" maxW="container.md" mx="auto">
+          <VStack spacing={2} align="center">
+              <Heading 
+                as="h2" 
+                size="xl" 
+                textAlign="center"
+                color={headingColor}
+                >
+              Contact Me
+              </Heading>
+              <Text textAlign="center">
+              Feel free to reach out to me for any inquiries or opportunities.
+              </Text>
+          </VStack>
+
+          <Box as= "form" onSubmit={handleSubmit} px={4}>
+              <VStack spacing={4}>
+                  <FormControl id="name" isRequired>
+                      <FormLabel>Name</FormLabel>
+                      <Input
+                          name="name"
+                          placeholder="Your Name" 
+                          value={formData.name}
+                          onChange={handleChange}
+                      />
+                      </FormControl>
+                      <FormControl id="email" isRequired>
+                      <FormLabel>Email</FormLabel>
+                      <Input
+                          placeholder="Your Email" 
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                      />
+                      </FormControl>
+                      <FormControl id="message" isRequired>
+                      <FormLabel>Message</FormLabel>
+                      <Textarea
+                          placeholder="Your Message" 
+                          name="message"
+                          value={formData.message}
+                          onChange={handleChange}
+                      />
+                      </FormControl>
+                  <Button type="submit" colorScheme="purple" width="full">
+                  Send Message
+                  </Button>
+              </VStack>
+          </Box>
+
+          {/* FAQ Section */}
+          <Accordion allowToggle py={8}>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex="1" textAlign="left">
+                    What are your working hours?
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                I'm generally available Monday to Friday, 9 AM to 5 PM EST. However, I'm flexible and can accommodate different time zones if needed.
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex="1" textAlign="left">
+                    What's your typical response time?
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel pb={4}>
+                I aim to respond to all inquiries within 24-48 hours during business days.
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+
         </VStack>
-
-        <Box as= "form" onSubmit={handleSubmit} px={4}>
-            <VStack spacing={4}>
-                <FormControl id="name" isRequired>
-                    <FormLabel>Name</FormLabel>
-                    <Input
-                        name="name"
-                        placeholder="Your Name" 
-                        value={formData.name}
-                        onChange={handleChange}
-                    />
-                    </FormControl>
-                    <FormControl id="email" isRequired>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                        placeholder="Your Email" 
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                    />
-                    </FormControl>
-                    <FormControl id="message" isRequired>
-                    <FormLabel>Message</FormLabel>
-                    <Textarea
-                        placeholder="Your Message" 
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                    />
-                    </FormControl>
-                <Button type="submit" colorScheme="purple" width="full">
-                Send Message
-                </Button>
-            </VStack>
-        </Box>
-
-         {/* FAQ Section */}
-         <Accordion allowToggle py={8}>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  What are your working hours?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              I'm generally available Monday to Friday, 9 AM to 5 PM EST. However, I'm flexible and can accommodate different time zones if needed.
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <h2>
-              <AccordionButton>
-                <Box flex="1" textAlign="left">
-                  What's your typical response time?
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
-            </h2>
-            <AccordionPanel pb={4}>
-              I aim to respond to all inquiries within 24-48 hours during business days.
-            </AccordionPanel>
-          </AccordionItem>
-        </Accordion>
-
-      </VStack>
+      </Container>
     </Box>
   );
 };
