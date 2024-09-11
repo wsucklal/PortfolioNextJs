@@ -5,6 +5,7 @@ import { Box, Text, VStack, Heading, SimpleGrid, Icon, Flex, Divider, useColorMo
 import { FaCode, FaGraduationCap, FaLaptopCode, FaBrain } from 'react-icons/fa';
 import { FaBook, FaDumbbell, FaVolleyballBall, FaRunning, FaPodcast, FaGamepad } from 'react-icons/fa';
 import FlippingCard from './components/FlippingCard';
+import PageTransition from './components/PageTransition';
 
 export default function Home() {
   const bgColor = useColorModeValue("gray.50", "gray.700");
@@ -16,6 +17,7 @@ export default function Home() {
   const dividerColor = useColorModeValue("gray.200", "gray.600");
 
   return (
+    <PageTransition>
     <Box p={8} bg={bgColor} color={textColor} borderRadius="lg">
     <VStack spacing={8} align="stretch">
       <Box>
@@ -85,5 +87,6 @@ export default function Home() {
       </Box>
     </VStack>
   </Box>
+  </PageTransition>
   );
 }

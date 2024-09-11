@@ -21,7 +21,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import emailjs from "emailjs-com";
-
+import PageTransition from "../components/PageTransition";
 
 const Contact: React.FC = () => {
 
@@ -75,6 +75,7 @@ const Contact: React.FC = () => {
   };
 
   return (
+    <PageTransition>
     <Box p={8}bg={bgColor} minH="100vh" color={textColor} borderRadius="lg">
       <Container maxW="container.xl" as="section" id="contact" >
         <VStack spacing={8} align="stretch" maxW="container.md" mx="auto">
@@ -161,6 +162,7 @@ const Contact: React.FC = () => {
         </VStack>
       </Container>
     </Box>
+    </PageTransition>
   );
 };
 

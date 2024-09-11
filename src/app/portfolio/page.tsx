@@ -17,7 +17,7 @@ import {
   Container,
 } from '@chakra-ui/react';
 import { FaGithub, FaCalendar } from 'react-icons/fa';
-
+import PageTransition from '../components/PageTransition';
 interface Repository {
   id: number;
   name: string;
@@ -90,68 +90,69 @@ const Portfolio: React.FC = () => {
   }
 
   return (
-    <Box bg={bgColor} minH="100vh"  margin="auto" p={5} borderRadius="lg">
-      <Container maxW="container.xl" maxWidth="1200px" as="section" id="portfolio">
-      <VStack spacing={8} align="stretch">
-        <Heading 
-        as="h2" 
-        size="xl" 
-        textAlign="center"
-        color={headingColor}>
-          My Projects
-        </Heading>
+    <PageTransition>    <Box bg={bgColor} minH="100vh"  margin="auto" p={5} borderRadius="lg">
+    <Container maxW="container.xl" maxWidth="1200px" as="section" id="portfolio">
+    <VStack spacing={8} align="stretch">
+      <Heading 
+      as="h2" 
+      size="xl" 
+      textAlign="center"
+      color={headingColor}>
+        My Projects
+      </Heading>
 
-        <Select value={filter} onChange={(e) => setFilter(e.target.value)} maxWidth="200px" alignSelf="flex-end">
-          {languages.map(lang => (
-            <option key={lang} value={lang}>{lang ? lang.charAt(0).toUpperCase() + lang.slice(1) : 'All'}</option>
-          ))}
-        </Select>
+      <Select value={filter} onChange={(e) => setFilter(e.target.value)} maxWidth="200px" alignSelf="flex-end">
+        {languages.map(lang => (
+          <option key={lang} value={lang}>{lang ? lang.charAt(0).toUpperCase() + lang.slice(1) : 'All'}</option>
+        ))}
+      </Select>
 
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-          {currentRepos.map((repo) => (
-            <Box
-              key={repo.id}
-              borderWidth="1px"
-              borderRadius="lg"
-              p={5}
-              bg={cardBg}
-              _hover={{ bg: cardHoverBg }}
-              transition="all 0.3s"
-            >
-              <VStack align="start" spacing={3}>
-                <Heading as="h3" size="md">
-                  {repo.name}
-                </Heading>
-                <Text fontSize="sm">{repo.description}</Text>
-                {repo.language && <Badge colorScheme="purple">{repo.language}</Badge>}
-                <Text fontSize="xs" color="gray.500">
-                  <FaCalendar style={{ display: 'inline', marginRight: '5px' }} />
-                  Last updated: {new Date(repo.updated_at).toLocaleDateString()}
-                </Text>
-                <Link href={repo.html_url} isExternal>
-                  <Button leftIcon={<FaGithub />} size="sm">
-                    View on GitHub
-                  </Button>
-                </Link>
-              </VStack>
-            </Box>
-          ))}
-        </SimpleGrid>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+        {currentRepos.map((repo) => (
+          <Box
+            key={repo.id}
+            borderWidth="1px"
+            borderRadius="lg"
+            p={5}
+            bg={cardBg}
+            _hover={{ bg: cardHoverBg }}
+            transition="all 0.3s"
+          >
+            <VStack align="start" spacing={3}>
+              <Heading as="h3" size="md">
+                {repo.name}
+              </Heading>
+              <Text fontSize="sm">{repo.description}</Text>
+              {repo.language && <Badge colorScheme="purple">{repo.language}</Badge>}
+              <Text fontSize="xs" color="gray.500">
+                <FaCalendar style={{ display: 'inline', marginRight: '5px' }} />
+                Last updated: {new Date(repo.updated_at).toLocaleDateString()}
+              </Text>
+              <Link href={repo.html_url} isExternal>
+                <Button leftIcon={<FaGithub />} size="sm">
+                  View on GitHub
+                </Button>
+              </Link>
+            </VStack>
+          </Box>
+        ))}
+      </SimpleGrid>
 
-        <HStack justifyContent="center" mt={4}>
-          {Array.from({ length: totalPages }, (_, i) => (
-            <Button
-              key={i + 1}
-              onClick={() => setCurrentPage(i + 1)}
-              colorScheme={currentPage === i + 1 ? "purple" : "gray"}
-            >
-              {i + 1}
-            </Button>
-          ))}
-        </HStack>
-      </VStack>
-      </Container>
-    </Box>
+      <HStack justifyContent="center" mt={4}>
+        {Array.from({ length: totalPages }, (_, i) => (
+          <Button
+            key={i + 1}
+            onClick={() => setCurrentPage(i + 1)}
+            colorScheme={currentPage === i + 1 ? "purple" : "gray"}
+          >
+            {i + 1}
+          </Button>
+        ))}
+      </HStack>
+    </VStack>
+    </Container>
+  </Box>
+  </PageTransition>
   );
 };
 
