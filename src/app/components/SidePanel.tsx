@@ -1,5 +1,5 @@
 "use client"; // This makes the component a Client Component
-
+import linkeding from '../../../public/images/linkedin.jpg'
 // components/SidePanel.tsx
 import React from 'react';
 import {
@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
-import { MdEmail, MdPhone, MdCake, MdLocationOn } from 'react-icons/md';
+import { MdEmail, MdPhone, MdCake, MdLocationOn, MdSentimentVerySatisfied  } from 'react-icons/md';
 import ColorModeSwitcher from './ColorModeSwitcher'; // Import the ColorModeSwitcher
 
 const SidePanel: React.FC = () => {
@@ -53,7 +53,7 @@ const SidePanel: React.FC = () => {
           border="4px solid"
           borderColor={accentColor}
           boxSize="120px"
-          src="https://media.licdn.com/dms/image/v2/C5603AQFgU7JukkXBbw/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1609145713918?e=1730332800&v=beta&t=kdAM66bil_1ZDWm369YAMdiwwlCRBwPk8hsPWSwfh_4"
+          src="/images/linkedin.jpg"
           alt="Profile Picture"
           boxShadow="lg"
         />
@@ -99,23 +99,7 @@ const SidePanel: React.FC = () => {
               <Text>(416) 919-8478</Text>
             </VStack>
           </HStack>
-          <HStack 
-            spacing={hStackSpacing}
-            align="stretch"
-            flex="1"
-            minWidth={hstackMinWidth}
-            boxShadow="lg"
-            borderRadius="lg"
-            p={2}
-            bg={useColorModeValue("white", "gray.600")}
-          >
-            <Icon as={MdCake} boxSize={iconSizing} flexShrink={0} alignSelf="center" color={accentColor} />
-            <Divider orientation="vertical" height="auto" borderColor={dividerColor} />
-            <VStack align="start" spacing={.5} flex="1">
-              <Text color={accentColor} fontWeight="bold">Birthday:</Text>
-              <Text>Feb 10, 2001</Text>
-            </VStack>
-          </HStack>
+
           <HStack 
             spacing={hStackSpacing}
             align="stretch"
@@ -133,6 +117,32 @@ const SidePanel: React.FC = () => {
               <Text>Toronto, Canada</Text>
             </VStack>
           </HStack>
+
+          <Link href="https://www.16personalities.com/enfp-personality" isExternal textDecoration="none" _hover={{ textDecoration: 'none' }}>
+          <HStack 
+            spacing={hStackSpacing}
+            align="stretch"
+            flex="1"
+            minWidth={hstackMinWidth}
+            boxShadow="lg"
+            borderRadius="lg"
+            p={2}
+            bg={useColorModeValue("white", "gray.600")}
+          >
+            {/* <Icon as={MdCake} boxSize={iconSizing} flexShrink={0} alignSelf="center" color={accentColor} />
+            <Divider orientation="vertical" height="auto" borderColor={dividerColor} />
+            <VStack align="start" spacing={.5} flex="1">
+              <Text color={accentColor} fontWeight="bold">Birthday:</Text>
+              <Text>Feb 10, 2001</Text>
+            </VStack> */}
+            <Icon as={MdSentimentVerySatisfied} boxSize={iconSizing} flexShrink={0} alignSelf="center" color={accentColor} />
+              <Divider orientation="vertical" height="auto" borderColor={dividerColor} />
+              <VStack align="start" spacing={.5} flex="1">
+                <Text color={accentColor} fontWeight="bold">Personality Type:</Text>
+                <Text>ENFP</Text>
+              </VStack>
+          </HStack>
+          </Link>
         </VStack>
 
         <HStack spacing={4} mt={4}>
