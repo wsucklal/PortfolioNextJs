@@ -1,5 +1,5 @@
 "use client"; // This makes the component a Client Component
-import linkeding from '../../../public/images/linkedin.jpg'
+
 // components/SidePanel.tsx
 import React from 'react';
 import {
@@ -16,7 +16,7 @@ import {
   Tooltip,
 } from '@chakra-ui/react';
 import { FaLinkedin, FaGithub, FaMedium } from 'react-icons/fa';
-import { MdEmail, MdPhone, MdCake, MdLocationOn, MdSentimentVerySatisfied  } from 'react-icons/md';
+import { MdEmail, MdPhone, MdLocationOn, MdSentimentVerySatisfied  } from 'react-icons/md';
 import ColorModeSwitcher from './ColorModeSwitcher'; // Import the ColorModeSwitcher
 
 const SidePanel: React.FC = () => {
